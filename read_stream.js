@@ -7,9 +7,11 @@ fs.writeFile("example.txt","pandu  pandu hekkl sjjajaka anamskds djdkjjd",(err)=
         console.log("written");
     }
 });
-const read =fs.createReadStream("./example.txt","utf8");
+const read =fs.createReadStream("./example.txt","utf8");// long way to write data into write stream
 const writes =fs.createWriteStream("example2.txt");
-read.on("data",(chunk)=>{
-    writes.write(chunk);
-    console.log(chunk);
-});
+//read.on("data",(chunky)=>{
+  //  writes.write(chunky);
+  // console.log(chunky);
+//});
+//short way to write into write stream
+read.pipe(writes);//writes data in example.txt to example2.txt
